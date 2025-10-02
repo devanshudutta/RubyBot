@@ -58,7 +58,7 @@ client.on("messageCreate", async (message: Message) => {
                             - No emojis or emoticons.`;
 
 
-        console.log("User Prompt:", userPrompt); // Debugging line
+        // console.log("User Prompt:", userPrompt); // Debugging line
 
         if (!userPrompt) {
             message.reply("Give me something to say!");
