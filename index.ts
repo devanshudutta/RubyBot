@@ -95,7 +95,7 @@ client.on("messageCreate", async (message: Message) => {
         }
     }
 
-     if (Math.random() < 0.10) {
+     if (Math.random() < 0.03) {
     try {
         if (
                 message.channel instanceof TextChannel ||
