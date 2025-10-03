@@ -94,6 +94,61 @@ client.on("messageCreate", async (message: Message) => {
             message.reply("Oops, something went wrong with Gemini!");
         }
     }
+
+     if (Math.random() < 0.10) {
+    try {
+        if (
+                message.channel instanceof TextChannel ||
+                message.channel instanceof NewsChannel ||
+                message.channel instanceof ThreadChannel ||
+                message.channel instanceof DMChannel
+            ) {
+                await message.channel.sendTyping();
+            }
+
+
+
+        const messageContent = message.content.replace(/<@!?(\d+)>/, "").trim()
+
+        const fetched = await message.channel.messages.fetch({ limit: 10 });
+        const chatHistory = fetched
+      .map(m => `${m.author.displayName}: ${m.cleanContent}`)
+      .reverse() // so oldest → newest
+      .join("\n");
+
+       const userPrompt = `You are Hoshino Ruby from *Oshi no Ko*. 
+                            Stay strictly in character: playful, energetic, Cheerful, Positive. 
+                            Do NOT break character or mention you are an AI.
+
+                            Chat history (most recent messages, oldest → newest) take this into account when replying:
+                            ${chatHistory}
+
+                            User message:
+                            ${messageContent}
+
+                            Response instructions:
+                            - Reply as Hoshino Ruby would.
+                            - Keep the reply natural and conversational.
+                            - Limit the response to about 20 words.
+                            - Use casual, friendly language with occasional slang.
+                            - Talk like a Hoshino Ruby would.
+                            - No emojis or emoticons.`;
+
+      const response = await ai.models.generateContent({
+        model: "gemini-2.5-pro",
+        contents: userPrompt,
+      });
+
+      console.log("Gemini response:", response.text!);
+
+
+        message.reply(response.text!);
+    } catch (err) {
+      console.error("Gemini error:", err);
+    }
+  }
+
+
 });
 
 client.login(process.env.DISCORD_TOKEN);
