@@ -11,9 +11,11 @@
   "license": "ISC",
   "dependencies": {
     "@google/genai": "^1.21.0",
+    "@supabase/supabase-js": "^2.112.4",
     "axios": "^1.12.2",
     "discord.js": "^14.22.1",
-    "dotenv": "^17.2.2"
+    "dotenv": "^17.2.2",
+    "groq-sdk": "^1.6.0"
   },
   "devDependencies": {
     "ts-node": "^10.9.2",
