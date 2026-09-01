@@ -406,7 +406,7 @@ client.on("messageCreate", async (message: Message) => {
 
             const response = await groq.chat.completions.create({
              model: "qwen/qwen3.8-27b",
-            reasoning_effort: "none",
+            // reasoning_effort: "none",
             reasoning_format: "hidden",
              messages: [
                 {
@@ -511,7 +511,7 @@ client.on("messageCreate", async (message: Message) => {
 
             const response = await groq.chat.completions.create({
               model: "qwen/qwen3.8-27b",
-            reasoning_effort: "none",
+            // reasoning_effort: "none", 
             reasoning_format: "hidden",
              messages: [
                 {
@@ -601,7 +601,7 @@ client.on("messageCreate", async (message: Message) => {
 
             const response = await groq.chat.completions.create({
               model: "qwen/qwen3.8-27b",
-            reasoning_effort: "none",
+            // reasoning_effort: "none",
             reasoning_format: "hidden",
              messages: [
                 {
